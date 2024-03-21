@@ -14,6 +14,9 @@ return {
     -- Useful status updates for LSP
     -- https://github.com/j-hui/fidget.nvim
     { 'j-hui/fidget.nvim', opts = {} },
+      -- Auto-Install LSPs, linters, formatters, debuggers
+    -- https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim
+    { 'WhoIsSethDaniel/mason-tool-installer.nvim' },
 
     -- Additional lua configuration, makes nvim stuff amazing!
     -- https://github.com/folke/neodev.nvim
@@ -36,6 +39,18 @@ return {
 				'yamlls', -- requires npm to be installed
 				'pyright',
       }
+    })
+
+     require('mason-tool-installer').setup({
+      -- Install these linters, formatters, debuggers automatically:
+      ensure_installed = {
+        'black',
+        'debugpy',
+        'flake8',
+        'isort',
+        'mypy',
+        'pylint',
+      },
     })
 
     local lspconfig = require('lspconfig')
