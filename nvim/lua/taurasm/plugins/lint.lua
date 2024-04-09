@@ -12,13 +12,13 @@ return {
         'flake8',
         'mypy',
         'pylint',
-        'black',
-        'isort',
+        -- 'black',
+        -- 'isort',
       }
     }
 
-    -- Automatically run linters after saving.  Use "InsertLeave" for more aggressive linting.
-    vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+    -- Automatically run linters after saving.  Use "InsertLeave" for more aggressive linting. or "TextChanged" or default "BufWritePost"
+    vim.api.nvim_create_autocmd({ "TextChanged" }, {
       -- Only run linter for the following extensions. Remove this to always run.
       pattern = { "*.py", },
       callback = function()

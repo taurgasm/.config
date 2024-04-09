@@ -12,6 +12,10 @@ vim.keymap.set('n', '<C-p>', builtin.git_files, {})
 vim.keymap.set('n', '<leader>ps', function()
 	builtin.grep_string({search = vim.fn.input('Grep > ') });
 end)
+vim.keymap.set('n', '<leader>pc', function ()
+  builtin.find_files {cwd = vim.fn.stdpath 'config'}
+end, {desc = '[P]roject [C]onfig files search'})
+
 
 
 local mark = require("harpoon.mark")
@@ -23,7 +27,7 @@ vim.keymap.set("n", "<C-t>", function() ui.nav_file(2) end)
 vim.keymap.set("n", "<C-n>", function() ui.nav_file(3) end)
 vim.keymap.set("n", "<C-s>", function() ui.nav_file(4) end)
 
---vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
+-- vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 
 vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
 
@@ -43,7 +47,7 @@ vim.keymap.set("n", "<leader>Y", "\"+Y")
 vim.keymap.set('i', "<C-c>", "<Esc>")
 
 
-vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
+-- vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 
 vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 
@@ -59,4 +63,14 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 -- vim.keymap.set("n", "<leader>ee", ":NvimTreeToggle<CR>") -- toggle file explorer
 -- vim.keymap.set("n", "<leader>er", ":NvimTreeFocus<CR>") -- toggle focus to file explorer
 -- vim.keymap.set("n", "<leader>ef", ":NvimTreeFindFile<CR>") -- find file in file explorer
-
+-- Molten
+vim.keymap.set("n", "<leader>mi", ":MoltenInit<CR>",
+    { silent = true, desc = "Initialize the plugin" })
+vim.keymap.set("n", "<leader>me", ":MoltenEvaluateOperator<CR>",
+    { silent = true, desc = "run operator selection" })
+vim.keymap.set("n", "<leader>ml", ":MoltenEvaluateLine<CR>",
+    { silent = true, desc = "evaluate line" })
+vim.keymap.set("n", "<leader>mr", ":MoltenReevaluateCell<CR>",
+    { silent = true, desc = "re-evaluate cell" })
+vim.keymap.set("v", "<leader>mv", ":<C-u>MoltenEvaluateVisual<CR>gv",
+    { silent = true, desc = "evaluate visual selection" })

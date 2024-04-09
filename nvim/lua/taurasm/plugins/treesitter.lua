@@ -2,7 +2,7 @@
 return {
   -- https://github.com/nvim-treesitter/nvim-treesitter
   'nvim-treesitter/nvim-treesitter',
-  event = 'VeryLazy',
+  -- event = 'VeryLazy',
   dependencies = {
     -- https://github.com/nvim-treesitter/nvim-treesitter-textobjects
     'nvim-treesitter/nvim-treesitter-textobjects',
@@ -15,7 +15,8 @@ return {
     indent = { enable = true },
     auto_install = true, -- automatically install syntax support when entering new file type buffer
     ensure_installed = {
-      'lua', 'python', 'javascript', 'typescript', 'html', 'css'
+      'lua', 'python', 'javascript', 'typescript', 'html', 'css', 'vim',
+      'vimdoc', 'markdown', 'bash', 'c', 
     },
   },
   config = function (_, opts)
